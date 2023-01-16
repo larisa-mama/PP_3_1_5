@@ -46,17 +46,17 @@ public class AdminRestController {
     }
 @PostMapping("/makeUser")
     public ResponseEntity<User> createRestUser (@RequestBody User user) {
-        List<String> lsr = user.getRoles().stream().map(r->r.getRole()).collect(Collectors.toList());
-        List<Role> liRo = userService.listByRole(lsr);
-        user.setRoles(Set.copyOf(liRo));
+        List<String> list1 = user.getRoles().stream().map(r->r.getRole()).collect(Collectors.toList());
+        List<Role> list2 = userService.listByRole(list1);
+        user.setRoles(Set.copyOf(list2));
         userService.add(user);
         return new ResponseEntity<>(user, HttpStatus.OK);
 }
 @PatchMapping("/changeUser")
     public ResponseEntity <User> updateRestUser (@RequestBody User user) {
-    List<String> lsr = user.getRoles().stream().map(r->r.getRole()).collect(Collectors.toList());
-    List<Role> liRo = userService.listByRole(lsr);
-    user.setRoles(Set.copyOf(liRo));
+    List<String> list1 = user.getRoles().stream().map(r->r.getRole()).collect(Collectors.toList());
+    List<Role> list2 = userService.listByRole(list1);
+    user.setRoles(Set.copyOf(list2));
     userService.edit(user);
     return new ResponseEntity<>(user, HttpStatus.OK);
 }
