@@ -26,7 +26,7 @@ $(document).ready(async function() {                                            
 
 //загрузить список ролей
 $(document).ready(async function () {
-    let rolles = await fetch("http://localhost:8080/allRoles").then(r => r.json());
+    let rolles = await fetch("http://localhost:8080/allRoles").then(r => r.json());         //настройки для fetch можно указать после url
     let rol = "";
     rolles.forEach((r) => rol += `<option value="${r.role}">${r.withoutPrefix}</option>`);
     let sel = `<select name="sele" onchange="console.log($('#select').val())" id="select"  
